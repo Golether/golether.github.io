@@ -1,0 +1,5 @@
+{
+  "signal": "wss://golether.duckdns.org:47943/signal",
+  "stun": "stun:golether.duckdns.org:47900",
+  "meet": "golether.duckdns.org:47900"
+}

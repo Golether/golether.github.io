@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    Nothing inline runs and nothing is loaded from other servers. 'wasm-unsafe-eval' lets the browser compile the
+    WebAssembly of .NET, of Avalonia and of the film decoders; connect-src allows the WebSocket of the rendezvous server
+    named in config.json; the film comes from the chosen file (blob:) or from the service worker of this site; the
+    film element and Avalonia style themselves from script, and the decoders run in workers of this site.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; connect-src 'self' blob: ws: wss:; media-src 'self' blob:; img-src 'self' blob: data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Golether</title>
+  <link rel="icon" href="golether.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/page.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <!-- Avalonia draws the screens into this element; the film element lies under its canvas. -->
+  <div id="out"></div>
+  <!-- Shown while .NET starts; a failure before the language packs shows a code. -->
+  <div id="loading"><img src="golether.svg" alt="" width="128" height="128"><div class="spinner"></div><p id="failure"></p></div>
+</body>
+</html>
